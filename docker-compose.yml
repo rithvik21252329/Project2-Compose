@@ -1,18 +1,15 @@
-version: '3.8'
+ersion: '3.8'
 
 services:
   jenkins:
     image: jenkins/jenkins:lts-jdk11
+    privileged: true
     ports:
-      - "8080:8080"
+      - "8081:8080"
       - "50000:50000"
     volumes:
       - jenkins-data:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock  # Share the Docker socket
-    environment:
-      DOCKER_HOST: "tcp://docker:2376"
-      DOCKER_CERT_PATH: /certs/client
-      DOCKER_TLS_VERIFY: 1
 
   dind:
     image: docker:latest

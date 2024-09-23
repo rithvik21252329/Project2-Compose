@@ -8,6 +8,7 @@ services:
       - "50000:50000"
     volumes:
       - jenkins-data:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock  # Share the Docker socket
     environment:
       DOCKER_HOST: "tcp://docker:2376"
       DOCKER_CERT_PATH: /certs/client
@@ -19,7 +20,7 @@ services:
     volumes:
       - docker-certs-ca:/certs/ca
       - docker-certs-client:/certs/client
-      - jenkins-data:/var/jenkins_home
+      - jenkins-data:/var/jenkins_home  # Share the Jenkins data volume for consistency
 
 volumes:
   jenkins-data:

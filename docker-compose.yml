@@ -24,6 +24,7 @@ services:
     volumes:
       - ./jenkins:/var/jenkins_home
       - /usr/bin/docker:/usr/bin/docker
+      - /var/run/docker.sock:/var/run/docker.sock
     environment:
       DOCKER_HOST: "tcp://dind:2375"
     networks:
